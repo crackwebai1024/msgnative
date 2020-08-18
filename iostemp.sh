@@ -1,0 +1,2 @@
+react-native bundle --platform ios --dev false --entry-file index.ios.js --bundle-output ios-release.bundle --sourcemap-output ios-release.bundle.map
+bugsnag-sourcemaps upload --api-key 30c30e3ade52eecca6b7d24fab6b3bfc --app-version "`jq -r '.app.version' build.json` (`jq -r '.app.buildnumber' build.json`)" --minified-file ios-release.bundle --source-map ios-release.bundle.map --minified-url main.jsbundle

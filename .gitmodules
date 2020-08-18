@@ -1,0 +1,8 @@
+[submodule "commons"]
+	path = commons
+	url = git@git.trustcorsystems.com:msgsafe/msgsafe-react-commons.git
+	branch = master
+[submodule "translations"]
+	path = translations
+	url = git@git.trustcorsystems.com:msgsafe/msgsafe-translations.git
+	branch = master

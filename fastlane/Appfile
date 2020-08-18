@@ -1,0 +1,7 @@
+app_identifier "com.trustcorsystems.msgsafe.io" # The bundle identifier of your app
+# apple_id "wylie.swanson@me.com" # Your Apple email address
+itc_team_id "117274851"
+itc_team_name "Trustcor Systems S de RL"
+
+json_key_file "~/src/trustcor/google.json"
+package_name "io.msgsafe.android" # e.g. com.krausefx.app

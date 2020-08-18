@@ -1,0 +1,13 @@
+MsgSafe.io allows you to communicate securely wth people you know using encrypted email, ephemeral chat, and encrypted voice and video calling.
+
+Be sure your messages and calls are private and secure with unique features that will help protect your identity:
+
+• Instant end-to-end encryption - Each MsgSafe.io email address is automatically setup with 4096-bit GPG and S/MIME encryption keys and certificates.
+
+• Secure email made simple - Instantly create as many email addresses as you need while keeping your real email and identity private.
+
+• Virtual Identities - Give out an identity instead of revealing your personal email address. Each identity is associated with its own group of contacts.
+
+• Encrypted & Ephemeral Chat - Secure, end-to-end encrypted instant messages that last only a short time.
+
+• Secure, Encrypted Voice & Video - Voice and video calling from MsgSafe.io is end-to-end encrypted. Feel confident knowing that all calls are user to user.

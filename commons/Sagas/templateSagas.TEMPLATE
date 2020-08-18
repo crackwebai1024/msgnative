@@ -1,0 +1,57 @@
+import { put, call } from 'redux-saga/effects'
+import { SubmissionError } from 'redux-form'
+
+
+import { callAPI, buildApiReadPayload } from './APISagas'
+import Actions, { REDUX_CONFIG } from 'commons/Redux/templateRedux'
+import { getError } from 'commons/Lib/Utils'
+
+export function * fetch ({ requestType: _requestType }) {
+  try {
+    let searchConfig = {
+      type: 'search_or',
+      columns: [ 'contact_email', 'contact_display_name' ]
+    }
+    const { payload, requestType, isRequestUnnecessary } = yield call(
+      buildApiReadPayload, _requestType, searchConfig, REDUX_CONFIG.statePrefix,
+      Actions.templateClearSearchData
+    )
+    if (isRequestUnnecessary) {
+      return
+    }
+    yield put(Actions.templateRequest(requestType))
+    const response = yield callAPI('Template', payload)
+    yield put(Actions.templateSuccess(response.data, requestType))
+  } catch (e) {
+    const err = getError(e, 'Failed to fetch. Please try again.')
+    yield put(Actions.templateFailure(err))
+  }
+}
+
+export function * create ({ payload, resolve, reject }) {
+  try {
+    const response = yield callAPI('CreateTemplate', payload)
+    resolve()
+    yield put(Actions.templateCreateSuccess(response.data))
+  } catch (e) {
+    reject(new SubmissionError({_error: getError(e, 'Failed to create. Please try again.')}))
+  }
+}
+
+export function * edit ({ payload, resolve, reject }) {
+  try {
+    const response = yield callAPI('EditTemplate', payload)
+    resolve()
+    yield put(Actions.templateEditSuccess(response.data))
+  } catch (e) {
+    reject(new SubmissionError({_error: getError(e, 'Failed to update. Please try again.')}))
+  }
+}
+
+export function * remove ({ payload }) {
+  try {
+    yield callAPI('DeleteTemplate', payload)
+  } catch (e) {
+    console.error('Delete contact API request failed - ', e)
+  }
+}

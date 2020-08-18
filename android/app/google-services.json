@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "362687888591",
+    "firebase_url": "https://msgsafe-io.firebaseio.com",
+    "project_id": "msgsafe-io",
+    "storage_bucket": "msgsafe-io.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:362687888591:android:7d1bc314f8759a6a",
+        "android_client_info": {
+          "package_name": "io.msgsafe.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "362687888591-jsm2knev2s226ei0ijp064a0o3nkgh72.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.msgsafe.android",
+            "certificate_hash": "37154e77b1c4fcb28a7529e6a48df066d236deb2"
+          }
+        },
+        {
+          "client_id": "362687888591-usnijh6bk7ls6ousfjbjfvhdcrobuoan.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMZvWx4poRqqDYYf7RtVgsQTzikh7T0jQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "362687888591-usnijh6bk7ls6ousfjbjfvhdcrobuoan.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

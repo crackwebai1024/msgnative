@@ -1,0 +1,113 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RNImportService", "RNImportService\RNImportService.csproj", "{0441DD80-9F8D-11E7-AE8E-694C9E4651F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactNative", "..\node_modules\react-native-windows\ReactWindows\ReactNative\ReactNative.csproj", "{C7673AD5-E3AA-468C-A5FD-FA38154E205C}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ReactNative.Shared", "..\node_modules\react-native-windows\ReactWindows\ReactNative.Shared\ReactNative.Shared.shproj", "{EEA8B852-4D07-48E1-8294-A21AB5909FE5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChakraBridge", "..\node_modules\react-native-windows\ReactWindows\ChakraBridge\ChakraBridge.vcxproj", "{4B72C796-16D5-4E3A-81C0-3E36F531E578}"
+EndProject
+Project("{577169CC-0ED5-BA46-21DF-C3EEB3F83F4F}") = "RNFS.Tests", "..\node_modules\react-native-fs\windows\RNFS.Tests\RNFS.Tests.csproj", "{6AACF8A2-2D94-0151-9869-765DE036B020}"
+EndProject
+Project("{D4D47625-8B48-8E54-0F07-B3FA18922097}") = "RNShare", "..\node_modules\react-native-share\windows\RNShare\RNShare.csproj", "{29AA6719-0326-E63B-42F8-A41C3F3C6C43}"
+EndProject
+Project("{9F1E60EE-CE16-CF85-456A-CCA2DBE1B8F7}") = "RNFS.Tests", "..\node_modules\react-native-fs\windows\RNFS.Tests\RNFS.Tests.csproj", "{1C0182CF-52F4-9A32-1913-017F186BDE25}"
+EndProject
+Project("{E32E51BB-8F29-EC0F-DA91-FB8B2F4603E5}") = "RNShare", "..\node_modules\react-native-share\windows\RNShare\RNShare.csproj", "{3667A4E3-586F-2A68-5F97-949F1C82B22A}"
+EndProject
+Project("{BA675224-265D-49CB-E364-22BBD81CA820}") = "RNFS.Tests", "..\node_modules\react-native-fs\windows\RNFS.Tests\RNFS.Tests.csproj", "{A2D6089F-F2DC-E9C3-EB77-E9E6DA658E85}"
+EndProject
+Project("{8C88C27D-E227-3876-14B4-AC6EFF87AFB2}") = "RNShare", "..\node_modules\react-native-share\windows\RNShare\RNShare.csproj", "{8F0595AB-2E2E-D5A5-8B22-B85A6225A67E}"
+EndProject
+Project("{5C8ED890-23BF-5EFA-7E18-1FE523423DEF}") = "RNFS.Tests", "..\node_modules\react-native-fs\windows\RNFS.Tests\RNFS.Tests.csproj", "{DA510C2F-1707-2D9B-F287-5F79E164D511}"
+EndProject
+Project("{71FAAB6D-02DF-B472-1C72-B51D58CEE3ED}") = "RNShare", "..\node_modules\react-native-share\windows\RNShare\RNShare.csproj", "{5CECFE8A-A7BC-7647-2174-7F7297849D2C}"
+EndProject
+Project("{D138FFED-689A-5200-35C7-9F44AE2DA886}") = "RNFS.Tests", "..\node_modules\react-native-fs\windows\RNFS.Tests\RNFS.Tests.csproj", "{E6A7F5A5-9DD0-699B-AE7A-4DE10FB4FD0D}"
+EndProject
+Project("{FDA1498C-56EE-F841-2D78-0D029D115A1C}") = "RNShare", "..\node_modules\react-native-share\windows\RNShare\RNShare.csproj", "{6380AFF0-A60D-B599-ED37-E31FE80B1982}"
+EndProject
+Project("{0D50DE7C-DEFE-2C4F-5C87-55E2D8BB3028}") = "RNFS.Tests", "..\node_modules\react-native-fs\windows\RNFS.Tests\RNFS.Tests.csproj", "{2280CB3D-E86E-C2B9-BBF3-D312803047E7}"
+EndProject
+Project("{B156B74E-1291-9811-6AF1-2019E32C6A3A}") = "RNShare", "..\node_modules\react-native-share\windows\RNShare\RNShare.csproj", "{9D17547D-AE12-B956-3DA7-EBA7B7753541}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\node_modules\react-native-windows\ReactWindows\ReactNative.Shared\ReactNative.Shared.projitems*{c7673ad5-e3aa-468c-a5fd-fa38154e205c}*SharedItemsImports = 4
+		..\node_modules\react-native-windows\ReactWindows\ReactNative.Shared\ReactNative.Shared.projitems*{eea8b852-4d07-48e1-8294-a21ab5909fe5}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Development|ARM = Development|ARM
+		Development|x64 = Development|x64
+		Development|x86 = Development|x86
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0441DD80-9F8D-11E7-AE8E-694C9E4651F0}.Debug|ARM.ActiveCfg = Debug|ARM
+		{0441DD80-9F8D-11E7-AE8E-694C9E4651F0}.Debug|ARM.Build.0 = Debug|ARM
+		{0441DD80-9F8D-11E7-AE8E-694C9E4651F0}.Debug|x64.ActiveCfg = Debug|x64
+		{0441DD80-9F8D-11E7-AE8E-694C9E4651F0}.Debug|x64.Build.0 = Debug|x64
+		{0441DD80-9F8D-11E7-AE8E-694C9E4651F0}.Debug|x86.ActiveCfg = Debug|x86
+		{0441DD80-9F8D-11E7-AE8E-694C9E4651F0}.Debug|x86.Build.0 = Debug|x86
+		{0441DD80-9F8D-11E7-AE8E-694C9E4651F0}.Development|ARM.ActiveCfg = Development|ARM
+		{0441DD80-9F8D-11E7-AE8E-694C9E4651F0}.Development|ARM.Build.0 = Development|ARM
+		{0441DD80-9F8D-11E7-AE8E-694C9E4651F0}.Development|x64.ActiveCfg = Development|x64
+		{0441DD80-9F8D-11E7-AE8E-694C9E4651F0}.Development|x64.Build.0 = Development|x64
+		{0441DD80-9F8D-11E7-AE8E-694C9E4651F0}.Development|x86.ActiveCfg = Development|x86
+		{0441DD80-9F8D-11E7-AE8E-694C9E4651F0}.Development|x86.Build.0 = Development|x86
+		{0441DD80-9F8D-11E7-AE8E-694C9E4651F0}.Release|ARM.ActiveCfg = Release|ARM
+		{0441DD80-9F8D-11E7-AE8E-694C9E4651F0}.Release|ARM.Build.0 = Release|ARM
+		{0441DD80-9F8D-11E7-AE8E-694C9E4651F0}.Release|x64.ActiveCfg = Release|x64
+		{0441DD80-9F8D-11E7-AE8E-694C9E4651F0}.Release|x64.Build.0 = Release|x64
+		{0441DD80-9F8D-11E7-AE8E-694C9E4651F0}.Release|x86.ActiveCfg = Release|x86
+		{0441DD80-9F8D-11E7-AE8E-694C9E4651F0}.Release|x86.Build.0 = Release|x86
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Debug|ARM.ActiveCfg = Debug|ARM
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Debug|ARM.Build.0 = Debug|ARM
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Debug|x64.ActiveCfg = Debug|x64
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Debug|x64.Build.0 = Debug|x64
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Debug|x86.ActiveCfg = Debug|x86
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Debug|x86.Build.0 = Debug|x86
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Development|ARM.ActiveCfg = Debug|ARM
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Development|ARM.Build.0 = Debug|ARM
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Development|x64.ActiveCfg = Debug|x64
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Development|x64.Build.0 = Debug|x64
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Development|x86.ActiveCfg = Debug|x86
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Development|x86.Build.0 = Debug|x86
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Release|ARM.ActiveCfg = Release|ARM
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Release|ARM.Build.0 = Release|ARM
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Release|x64.ActiveCfg = Release|x64
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Release|x64.Build.0 = Release|x64
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Release|x86.ActiveCfg = Release|x86
+    {C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Release|x86.Build.0 = Release|x86
+		{4B72C796-16D5-4E3A-81C0-3E36F531E578}.Debug|ARM.ActiveCfg = Debug|ARM
+		{4B72C796-16D5-4E3A-81C0-3E36F531E578}.Debug|ARM.Build.0 = Debug|ARM
+		{4B72C796-16D5-4E3A-81C0-3E36F531E578}.Debug|x64.ActiveCfg = Debug|x64
+		{4B72C796-16D5-4E3A-81C0-3E36F531E578}.Debug|x64.Build.0 = Debug|x64
+		{4B72C796-16D5-4E3A-81C0-3E36F531E578}.Debug|x86.ActiveCfg = Debug|Win32
+		{4B72C796-16D5-4E3A-81C0-3E36F531E578}.Debug|x86.Build.0 = Debug|Win32
+		{4B72C796-16D5-4E3A-81C0-3E36F531E578}.Development|ARM.ActiveCfg = Debug|ARM
+		{4B72C796-16D5-4E3A-81C0-3E36F531E578}.Development|ARM.Build.0 = Debug|ARM
+		{4B72C796-16D5-4E3A-81C0-3E36F531E578}.Development|x64.ActiveCfg = Debug|x64
+		{4B72C796-16D5-4E3A-81C0-3E36F531E578}.Development|x64.Build.0 = Debug|x64
+		{4B72C796-16D5-4E3A-81C0-3E36F531E578}.Development|x86.ActiveCfg = Debug|Win32
+		{4B72C796-16D5-4E3A-81C0-3E36F531E578}.Development|x86.Build.0 = Debug|Win32
+		{4B72C796-16D5-4E3A-81C0-3E36F531E578}.Release|ARM.ActiveCfg = Release|ARM
+		{4B72C796-16D5-4E3A-81C0-3E36F531E578}.Release|ARM.Build.0 = Release|ARM
+		{4B72C796-16D5-4E3A-81C0-3E36F531E578}.Release|x64.ActiveCfg = Release|x64
+		{4B72C796-16D5-4E3A-81C0-3E36F531E578}.Release|x64.Build.0 = Release|x64
+		{4B72C796-16D5-4E3A-81C0-3E36F531E578}.Release|x86.ActiveCfg = Release|Win32
+		{4B72C796-16D5-4E3A-81C0-3E36F531E578}.Release|x86.Build.0 = Release|Win32    
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
+  

@@ -1,0 +1,11 @@
+framework module Netperf {
+  umbrella header "Netperf.h"
+
+  export *
+  module * { export * }
+}
+
+module Netperf.Swift {
+    header "Netperf-Swift.h"
+    requires objc
+}

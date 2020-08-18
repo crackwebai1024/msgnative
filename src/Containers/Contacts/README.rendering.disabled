@@ -1,0 +1,48 @@
+        { this._isEditing() && ( <FormSectionTitle text='EMAIL RENDERING' />)}
+        
+      { this._isEditing() && (
+              <Field
+                name='contact_pref_mail_load_remote_content'
+                component={SwitchInput}
+                label='Remote content rendering'
+                onHelpText='Downloaded and displayed'
+                offHelpText='Always ask me'
+                values={[false, true]}
+                onSubmitEditing={dismissKeyboard}
+              />  
+        )}
+
+        { this._isEditing() && (
+                <Field
+                name='contact_pref_mail_load_embedded_image'
+                component={SwitchInput}
+                label='Embedded content rendering'
+                onHelpText='Displayed automatically'
+                offHelpText='Always ask me'
+                values={[false, true]}
+                onSubmitEditing={dismissKeyboard}
+              />  
+        )}
+        {this._isEditing() && (
+              <Field
+                name='pref_mail_load_remote_content'
+                component={SwitchInput}
+                label='Remote content rendering, default'
+                onHelpText='Download and display automatically'
+                offHelpText='Always ask me'
+                values={[false, true]}
+                onSubmitEditing={dismissKeyboard}
+              />  
+        )}
+        {this._isEditing() && (
+
+                <Field
+                name='pref_mail_load_embedded_image'
+                component={SwitchInput}
+                label='Embedded content rendering, default'
+                onHelpText='Displayed automatically'
+                offHelpText='Always ask me'
+                values={[false, true]}
+                onSubmitEditing={dismissKeyboard}
+              />  
+        )}

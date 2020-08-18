@@ -1,0 +1,36 @@
+{
+  "translator": {
+    "comment": "",
+    "max_words": 500,
+    "level": 1,
+    "credentials": [
+      "me@vivek.im",
+      "mv4oyk3KDrAYwJ"
+    ],
+    "group_id": "tclang",
+    "lang_code_mapping": {
+      "ru": "ru-ru",
+      "fr": "fr-fr",
+      "zh": "zh-cn",
+      "pt": "pt-pt",
+      "de": "de-de",
+      "sv": "sv-se",
+      "it": "it-it",
+      "tl": "tl-ph",
+      "ar": "ar-sa",
+      "fi": "fi-fi",
+      "xx": "xx-xx",
+      "nl": "nl-nl",
+      "ja": "ja-jp",
+      "es": "es-es",
+      "cn": "zh-cn",
+      "jp": "jp-jp",
+      "ro": "ro-ro",
+      "tr": "tr-TR"
+    }
+  },
+  "debug": false,
+  "templates_dir": "app/templates",
+  "revision_date_format": "%Y-%m-%dT%H:%M:%S",
+  "source": "translations.json"
+}

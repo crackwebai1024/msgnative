@@ -1,0 +1,6 @@
+# git_url "git@git.trustcorsystems.com:trustcor/codesigning.git"
+# type "appstore" # The default type, can be: appstore, adhoc, enterprise or development
+
+app_identifier ["com.trustcorsystems.msgsafe.io"]
+# username "wylie.swanson@me.com" # Your Apple Developer Portal username
+# username "rach.mcpherson@icloud.com" # Your Apple Developer Portal username

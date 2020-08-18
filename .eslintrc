@@ -1,0 +1,8 @@
+{
+  "extends": ["standard", "standard-react"],
+  "parser": "babel-eslint",
+  "rules": {
+    "react/jsx-no-bind": "allow",
+    "prefer-promise-reject-errors": "warn"
+  }
+}

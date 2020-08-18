@@ -1,0 +1,21 @@
+State
+
+
+Action			InvokedFrom								Description
+-----------------------------------------------------------------------------------------------------------------------------
+endVideoCall		VideoChat/index.js: _endCall() 						User presses hangup
+			Sagas/ChatSagas/WebRTC: listenForIceConnectionStateChangeChannel()	iceConnectionState == closed, disconnected, failed
+
+
+
+Testing
+
+ Device Plugged in      Description                                                             Result
+-----------------------------------------------------------------------------------------------------------------------------
+ iPad                   iPad-call-and-establish-session-then-hangup-local                       OK! No stale sessions
+ iPad                   iPad-call-and-wait-for-second-device-timeout-dont-answer                OK! No stale sessions   ; *new feature
+ iPad                   iPod-call-answer-then-ice-conn-fail                                     OK! No stale sessions   ; *new bugfix
+ iPad                   iPad-call-and-immediately-hangup-before-iPod-sees-request               OK! No stale sessions
+ iPad                   iPad-call-and-wait-for-second-device-display-then-hangup-local          OK! No stale sessions
+ iPad                   iPad-call-wait-for-iPod-to-decline                                      OK! No stale sessions
+ iPad                   iPad-call-and-establish-session-then-immediately-hangup-remote          NOT STABLE - Hard to reproduce, but if timing right: Remote side has stale CallKit. Local side fine.

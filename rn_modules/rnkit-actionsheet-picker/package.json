@@ -1,0 +1,108 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "rnkit-actionsheet-picker@^1.0.4",
+        "scope": null,
+        "escapedName": "rnkit-actionsheet-picker",
+        "name": "rnkit-actionsheet-picker",
+        "rawSpec": "^1.0.4",
+        "spec": ">=1.0.4 <2.0.0",
+        "type": "range"
+      },
+      "/Volumes/MACDATA/Works/TrustCor/msgsafe-react-native-app"
+    ]
+  ],
+  "_cnpm_publish_time": 1499397893849,
+  "_from": "rnkit-actionsheet-picker@>=1.0.4 <2.0.0",
+  "_id": "rnkit-actionsheet-picker@1.0.4",
+  "_inCache": true,
+  "_location": "/rnkit-actionsheet-picker",
+  "_nodeVersion": "7.6.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/rnkit-actionsheet-picker-1.0.4.tgz_1499397893500_0.03890189388766885"
+  },
+  "_npmUser": {
+    "name": "simman",
+    "email": "liwei0990@gmail.com"
+  },
+  "_npmVersion": "4.1.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "rnkit-actionsheet-picker@^1.0.4",
+    "scope": null,
+    "escapedName": "rnkit-actionsheet-picker",
+    "name": "rnkit-actionsheet-picker",
+    "rawSpec": "^1.0.4",
+    "spec": ">=1.0.4 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/rnkit-actionsheet-picker/-/rnkit-actionsheet-picker-1.0.4.tgz",
+  "_shasum": "438f6d135b526dd3f9ab14946b070096b5018ae2",
+  "_shrinkwrap": null,
+  "_spec": "rnkit-actionsheet-picker@^1.0.4",
+  "_where": "/Volumes/MACDATA/Works/TrustCor/msgsafe-react-native-app",
+  "author": {
+    "name": "SimMan",
+    "email": "liwei0990@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/rnkit/rnkit-actionsheet-picker/issues"
+  },
+  "dependencies": {},
+  "description": "React Native ActionSheetPicker component for iOS + Android",
+  "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "eslint": "^3.3.1",
+    "eslint-config-airbnb": "^10.0.1",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-jsx-a11y": "^2.1.0",
+    "eslint-plugin-prefer-object-spread": "^1.1.0",
+    "eslint-plugin-react": "^6.1.2"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "438f6d135b526dd3f9ab14946b070096b5018ae2",
+    "size": 195074,
+    "noattachment": false,
+    "tarball": "http://registry.npm.taobao.org/rnkit-actionsheet-picker/download/rnkit-actionsheet-picker-1.0.4.tgz"
+  },
+  "gitHead": "101e1d35a480ca7a9553dafe494f9ef0dd8f197d",
+  "homepage": "https://github.com/rnkit/rnkit-actionsheet-picker",
+  "keywords": [
+    "react",
+    "react-native",
+    "react-component",
+    "actionsheet",
+    "picker",
+    "picker-view",
+    "datepicker",
+    "datapicker"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "simman",
+      "email": "liwei0990@gmail.com"
+    }
+  ],
+  "name": "rnkit-actionsheet-picker",
+  "optionalDependencies": {},
+  "peerDependencies": {
+    "react": ">=15.3.1",
+    "react-native": ">=0.28"
+  },
+  "publish_time": 1499397893849,
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rnkit/rnkit-actionsheet-picker.git"
+  },
+  "scripts": {},
+  "version": "1.0.4"
+}

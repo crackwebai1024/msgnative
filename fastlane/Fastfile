@@ -1,0 +1,200 @@
+# vi:syntax=diff
+
+fastlane_version "2.112.0"
+# update_fastlane(nightly: true)
+
+# Posts to #msgsafe-native as Fastlane
+# slack_default = "https://hooks.slack.com/services/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"
+# Post to Wylie
+slack_default = "https://trustcor.slack.com/services/B6WTSNYDB"
+
+ENV["SLACK_URL"] = slack_default
+
+build = load_json(json_path: 'build.json')
+
+ts = Time.new.strftime('%Y%m%d')
+name = "#{build['app']['name']}"
+tag = "#{build['app']['tag']}"
+version = "#{build['app']['version']}"
+branch = "#{build['app']['branch']}"
+revision = "#{build['sourceControl']['revision']}"
+versionName = version
+versionCode = "#{build['app']['buildnumber']}"
+versionStage = "beta"
+
+before_all do |lane|
+end
+
+before_each do |lane|
+end
+
+after_each do |lane|
+end
+
+after_all do |lane|
+end
+
+desc "Clean build environment"
+lane :clean do
+  slack( 
+    message: "Cleaning build environment for *#{tag}* 🚀", 
+    payload: {}, 
+    default_payloads: [], 
+    fail_on_error: false
+  )
+
+  clean_build_artifacts
+  gradle(
+    project_dir: "./android",
+    task: "clean"
+  )
+
+  Dir.chdir("..") do
+    sh("rm -rf node_modules")
+    sh("watchman watch-del-all")
+  end
+end
+
+desc "Prepare build environment"
+lane :prepare do
+  # ensure_git_status_clean
+  ensure_git_branch(
+    branch: branch
+  )
+  yarn(
+    command: "install",
+    package_path: "./package.json"
+  )
+end
+
+#  self.runner.current_platform = :ios
+#  self.runner.current_platform = :android
+
+platform :ios do 
+  desc "Preflight check for iOS"
+  lane :preflightcheck do
+    precheck
+  end
+
+  desc "Build iOS"
+  lane :build do
+    appicon(
+      appicon_image_file: 'spec/fixtures/MsgSafe.ios.png',
+      appicon_devices: [ :ipad, :iphone, :ios_marketing, :watch, :watch_marketing ],
+      appicon_path: './ios/MsgSafe/Images.xcassets'
+    )
+    match(
+      type: "appstore",
+      git_url: "git@git.trustcorsystems.com:trustcor/codesigning.git",
+      team_id: "F928VTHKZ7"
+    )
+
+
+    # Dir.chdir("../node_modules/react-native") do
+    #   sh("scripts/ios-install-third-party.sh")
+    # end
+    #
+    #    Dir.chdir("../node_modules/react-native/third-party/glog-0.3.5/") do
+    #      sh("../../scripts/ios-configure-glog.sh")
+    #    end
+
+    # if options[:clean] clean = true else clean = false end 
+    # if options[:silent] silent = true else silent = false end
+    clean = false
+    silent = false
+    build_ios_app(
+      workspace: "./ios/MsgSafe.xcworkspace",
+      configuration: "Release",
+      scheme: "MsgSafe",
+      silent: silent,
+      clean: clean,
+      output_name: "MsgSafe.ipa",
+      xcpretty_report_html: './report.html',
+      xcpretty_report_json: './report.json',
+      include_symbols: true,
+      include_bitcode: true,
+      analyze_build_time: true,
+      xcpretty_utf: true
+    )
+  end
+
+  desc "Refresh and upload dSYM to Bugsnag"
+  lane :refresh_dsym_upload do
+    download_dsyms(
+      version: versionName, 
+      build_number: versionCode
+    )
+    upload_symbols_to_bugsnag(
+      verbose: true
+    )
+  end
+
+  desc "Release iOS Testflight/beta and notify Bugsnag"
+  lane :beta do
+    # use ./fastlane/changelog.txt for all languages until we translate them
+    # set_changelog( 
+    #   version: versionCode 
+    # )
+
+    begin
+      upload_to_testflight(
+        skip_waiting_for_build_processing: false,
+        demo_account_required: true, 
+        first_name: "Demo", 
+        last_name: "User", 
+        email: "demouser@msgsafe.io"
+      )
+    rescue => ex
+      UI.important('upload for iOS failed')
+    end
+    upload_symbols_to_bugsnag(
+      verbose: true,
+      dsym_path: lane_context[SharedValues::DSYM_OUTPUT_PATH]
+    )
+    # use build.sh 
+  end 
+end
+
+platform :android do
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test")
+  end
+
+  desc "Build android icons"
+  lane :icons do
+    android_appicon(
+      appicon_image_file: 'spec/fixtures/MsgSafe.android.png',
+      appicon_icon_types: [:launcher],
+      appicon_path: 'android/app/src/main/res/mipmap'
+    )
+  end
+
+  desc "Build android"
+  lane :build do
+    gradle(
+      project_dir: "./android",
+      task: 'assemble',
+      build_type: 'Release',
+      properties: { 
+        'versionCode' => versionCode,  
+        'versionName' => versionName 
+      },
+      print_command: true,
+      print_command_output: true
+    )
+  end
+
+  desc "Release Android alpha and notify Bugsnag"
+  lane :alpha do 
+    supply(
+      apk: './android/app/build/outputs/apk/release/app-release.apk',
+      track: 'alpha'
+    )
+  end
+
+end
+
+error do |lane, exception|
+  # slack( message: exception.to_s, default_payloads: [], success: false)
+end

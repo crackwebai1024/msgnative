@@ -1,0 +1,200 @@
+{
+  "images": [
+    {
+      "size": "1024x1024",
+      "idiom": "ios-marketing",
+      "filename": "MsgSafe.ios-1024x1024.png",
+      "scale": "1x"
+    },
+    {
+      "size": "1024x1024",
+      "idiom": "watch-marketing",
+      "filename": "MsgSafe.ios-1024x1024.png",
+      "scale": "1x"
+    },
+    {
+      "size": "108x108",
+      "idiom": "watch",
+      "filename": "MsgSafe.ios-216x216.png",
+      "scale": "2x",
+      "role": "quickLook",
+      "subtype": "44mm"
+    },
+    {
+      "size": "98x98",
+      "idiom": "watch",
+      "filename": "MsgSafe.ios-196x196.png",
+      "scale": "2x",
+      "role": "quickLook",
+      "subtype": "42mm"
+    },
+    {
+      "size": "60x60",
+      "idiom": "iphone",
+      "filename": "MsgSafe.ios-180x180.png",
+      "scale": "3x"
+    },
+    {
+      "size": "86x86",
+      "idiom": "watch",
+      "filename": "MsgSafe.ios-172x172.png",
+      "scale": "2x",
+      "role": "quickLook",
+      "subtype": "38mm"
+    },
+    {
+      "size": "83.5x83.5",
+      "idiom": "ipad",
+      "filename": "MsgSafe.ios-167x167.png",
+      "scale": "2x"
+    },
+    {
+      "size": "76x76",
+      "idiom": "ipad",
+      "filename": "MsgSafe.ios-152x152.png",
+      "scale": "2x"
+    },
+    {
+      "size": "60x60",
+      "idiom": "iphone",
+      "filename": "MsgSafe.ios-120x120.png",
+      "scale": "2x"
+    },
+    {
+      "size": "40x40",
+      "idiom": "iphone",
+      "filename": "MsgSafe.ios-120x120.png",
+      "scale": "3x"
+    },
+    {
+      "size": "50x50",
+      "idiom": "watch",
+      "filename": "MsgSafe.ios-100x100.png",
+      "scale": "2x",
+      "role": "appLauncher",
+      "subtype": "44mm"
+    },
+    {
+      "size": "44x44",
+      "idiom": "watch",
+      "filename": "MsgSafe.ios-88x88.png",
+      "scale": "2x",
+      "role": "appLauncher",
+      "subtype": "40mm"
+    },
+    {
+      "size": "29x29",
+      "idiom": "watch",
+      "filename": "MsgSafe.ios-87x87.png",
+      "scale": "3x",
+      "role": "companionSettings"
+    },
+    {
+      "size": "29x29",
+      "idiom": "iphone",
+      "filename": "MsgSafe.ios-87x87.png",
+      "scale": "3x"
+    },
+    {
+      "size": "40x40",
+      "idiom": "ipad",
+      "filename": "MsgSafe.ios-80x80.png",
+      "scale": "2x"
+    },
+    {
+      "size": "40x40",
+      "idiom": "watch",
+      "filename": "MsgSafe.ios-80x80.png",
+      "scale": "2x",
+      "role": "appLauncher",
+      "subtype": "38mm"
+    },
+    {
+      "size": "40x40",
+      "idiom": "iphone",
+      "filename": "MsgSafe.ios-80x80.png",
+      "scale": "2x"
+    },
+    {
+      "size": "76x76",
+      "idiom": "ipad",
+      "filename": "MsgSafe.ios-76x76.png",
+      "scale": "1x"
+    },
+    {
+      "size": "20x20",
+      "idiom": "iphone",
+      "filename": "MsgSafe.ios-60x60.png",
+      "scale": "3x"
+    },
+    {
+      "size": "29x29",
+      "idiom": "iphone",
+      "filename": "MsgSafe.ios-58x58.png",
+      "scale": "2x"
+    },
+    {
+      "size": "29x29",
+      "idiom": "ipad",
+      "filename": "MsgSafe.ios-58x58.png",
+      "scale": "2x"
+    },
+    {
+      "size": "29x29",
+      "idiom": "watch",
+      "filename": "MsgSafe.ios-58x58.png",
+      "scale": "2x",
+      "role": "companionSettings"
+    },
+    {
+      "size": "27.5x27.5",
+      "idiom": "watch",
+      "filename": "MsgSafe.ios-55x55.png",
+      "scale": "2x",
+      "role": "notificationCenter",
+      "subtype": "42mm"
+    },
+    {
+      "size": "24x24",
+      "idiom": "watch",
+      "filename": "MsgSafe.ios-48x48.png",
+      "scale": "2x",
+      "role": "notificationCenter",
+      "subtype": "38mm"
+    },
+    {
+      "size": "20x20",
+      "idiom": "ipad",
+      "filename": "MsgSafe.ios-40x40.png",
+      "scale": "2x"
+    },
+    {
+      "size": "40x40",
+      "idiom": "ipad",
+      "filename": "MsgSafe.ios-40x40.png",
+      "scale": "1x"
+    },
+    {
+      "size": "20x20",
+      "idiom": "iphone",
+      "filename": "MsgSafe.ios-40x40.png",
+      "scale": "2x"
+    },
+    {
+      "size": "29x29",
+      "idiom": "ipad",
+      "filename": "MsgSafe.ios-29x29.png",
+      "scale": "1x"
+    },
+    {
+      "size": "20x20",
+      "idiom": "ipad",
+      "filename": "MsgSafe.ios-20x20.png",
+      "scale": "1x"
+    }
+  ],
+  "info": {
+    "version": 1,
+    "author": "fastlane"
+  }
+}

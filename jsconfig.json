@@ -1,0 +1,15 @@
+// for Visual Studio Code users.
+// not relevant to the project.
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "commons/*": ["./commons/*"],
+      "app/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "commons/**/*"
+  ]
+}

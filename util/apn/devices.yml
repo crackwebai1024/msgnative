@@ -1,0 +1,17 @@
+apple:
+  apn_cert: certs/APNPushCert.pem
+  apn_key: certs/APNPushKey.nopass.pem
+  voip_cert: certs/VoipPushCert.pem
+  voip_key: certs/VoipPushKey.nopass.pem
+devices:
+  bblack_ipod:
+    device_token: be1a2883812cd10275c4a7585a2ff9ae7b5b38318de7139a73d6ff95121866d6
+    voip_token: 64507749c58166bd325c2dae6bd24f2589938c4c9980b4f3a7ae89552f24e51d
+  vivek_ipad:
+    device_token: f33e8523509b640b7d09020e5a9587761a50cad52632068db8ba754fbbb28832
+    voip_token: abd584771104dd9471e71971b9f4eb8c937e2c154c77b6f331ac2020c78fe226
+  vivek_iphone:
+    device_token: 1e74d1d19dc625cfed19e354f2fd2c345ca3415f4df985e5a1687d71c8c0f18e
+    voip_token: d0e0067bb959dc524b9150b9305c05b7d2af76fe87377afb1d483428a18b6beb
+  wylie_iphone:
+    device_token: f27b0f283e361ec38826d8a4ee7979f40c7f6da45a497103636ad184eab22be9

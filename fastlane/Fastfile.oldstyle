@@ -1,0 +1,254 @@
+# vi:syntax=diff
+
+fastlane_version "2.91.0"
+
+slack_default = "https://hooks.slack.com/services/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"
+slack_wylie = "https://hooks.slack.com/services/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"
+ENV["SLACK_URL"] = slack_default
+
+# default_platform :ios
+
+major = sh("jq .version.major ../appversion.json | tr -d '\n'", log: false)
+minor = sh("jq .version.minor ../appversion.json | tr -d '\n'", log: false)
+patch = sh("jq .version.patch ../appversion.json | tr -d '\n'", log: false)
+stage = sh("jq .status.stage ../appversion.json | tr -d '\n' | sed -e 's/\"//g'", log: false)
+build = sh("jq .build.number ../appversion.json | tr -d '\n'", log: false)
+revision = sh("git rev-parse HEAD | tr -d '\n'", log: false)
+version = major + '.' + minor + '.' + patch
+puts version
+git_tag = major + '.' + minor + '.' + patch + '+build.' + build + '+' + Time.new.strftime('%Y%m%d') + '.' + stage + '+native'
+puts git_tag
+
+before_all do |lane, options|
+  slack(
+    message: "MsgSafe.io native build *" + git_tag + "* started 🚀", payload: {}, default_payloads: [], fail_on_error: false
+  )
+  slack(
+    message: "MsgSafe.io native build *" + git_tag + "* started 🚀", channel: '#msgsafe-dev', payload: {}, default_payloads: [], fail_on_error: false
+  )
+end
+
+desc "Clean development environment"
+lane :clean do
+  ensure_git_branch(branch: "master")
+  ensure_git_status_clean
+  slack(
+    message: "Cleaning node_modules, watchman-del-all, node processes and yarn cache", payload: {}, default_payloads: [], slack_url: slack_default
+  )
+  Dir.chdir("..") do
+    sh("rm -rf node_modules")
+    sh("watchman watch-del-all")
+    slack(
+      message: "yarn install", payload: {}, default_payloads: [], slack_url: slack_default
+    )
+    sh("yarn install")
+  end
+end
+
+desc "Build and release beta to Apple and Google"
+lane :beta do
+  slack(message: "Building and releasing beta for 📱iOS and Android", payload: {}, default_payloads: [], slack_url: slack_default)
+  ensure_git_branch(branch: "master")
+  ensure_git_status_clean
+
+  Dir.chdir("..") do
+    sh("rm -rf node_modules")
+    sh("watchman watch-del-all")
+
+
+    slack(message: "Executing yarn install...", payload: {}, default_payloads: [], slack_url: slack_default)
+    sh("yarn install")
+  end
+
+  slack(message: "Building for iOS", payload: {}, default_payloads: [], slack_url: slack_default)
+  match(
+    type: "appstore",
+    git_url: "git@git.trustcorsystems.com:trustcor/codesigning.git",
+    team_id: "F928VTHKZ7"
+  )
+  build_ios_app(
+    workspace: "./ios/MsgSafe.xcworkspace",
+    configuration: "Release",
+    scheme: "MsgSafe",
+    silent: true,
+    clean: true,
+    output_name: "MsgSafe.ipa",
+    include_bitcode: false
+  )
+  slack(message: "Uploading testflight to Apple...", payload: {}, default_payloads: [], slack_url: slack_default)
+  pilot(skip_waiting_for_build_processing: true)
+
+  slack(message: "Uploading release information to Bugsnag...", payload: {}, default_payloads: [], slack_url: slack_default)
+  upload_symbols_to_bugsnag
+  sh('../bugsnag-release.py --buildnumber ' + build + ' --commit ' + revision + ' --notifier 30c30e3ade52eecca6b7d24fab6b3bfc')
+
+  slack(message: "Building for Android", payload: {}, default_payloads: [], slack_url: slack_default)
+  gradle(
+    project_dir: "./android",
+    task: "clean"
+  )
+
+  gradle(
+    project_dir: "./android",
+    task: 'assemble',
+    build_type: 'Release',
+    properties: {
+      'versionCode' => build,
+      'versionName' => version
+    }
+  )
+  apk_path = Actions.lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]
+
+  slack(message: "Uploading beta to Google Play...", payload: {}, default_payloads: [], slack_url: slack_default)
+  supply(
+    apk: apk_path,
+    track: 'beta'
+  )
+  slack(message: "Uploading release information to Bugsnag...", payload: {}, default_payloads: [], slack_url: slack_default)
+  sh('../bugsnag-release.py --buildnumber ' + build + ' --commit ' + revision + ' --notifier 323d3322da613caedd0362f5bce64ca9')
+
+  slack(
+    message: "MsgSafe.io beta released 🚀",
+    channel: '#msgsafe-dev',
+    payload: {
+      "Tag" => git_tag,
+      "Revision" => revision
+    },
+    default_payloads: [],
+    fail_on_error: false
+  )
+end
+
+platform :ios do
+  desc "Dummy routine"
+  lane :null do
+    slack(message: "Fastlane iOS empty/null step", payload: {}, default_payloads: [], slack_url: slack_default)
+  end
+
+  desc "Future testing"
+  lane :test do
+    scan()
+  end
+
+  desc "Generate Appstore icons"
+  lane :icons do
+    appicon(
+      appicon_image_file: 'spec/fixtures/MsgSafe.ios.png',
+      appicon_devices: [
+        :ipad,
+        :iphone,
+        :ios_marketing
+      ],
+      appicon_path: './ios/MsgSafe/Images.xcassets'
+    )
+  end
+
+  desc "Build and upload testflight"
+  lane :beta do |options|
+    slack(message: "Preparing codesigning", payload: {}, default_payloads: [], slack_url: slack_default)
+    match(
+      type: "appstore",
+      git_url: "git@git.trustcorsystems.com:trustcor/codesigning.git",
+      team_id: "F928VTHKZ7"
+    )
+
+    slack(message: "Building for iOS", payload: {}, default_payloads: [], slack_url: slack_default)
+    build_ios_app(
+      workspace: "./ios/MsgSafe.xcworkspace",
+      configuration: "Release",
+      scheme: "MsgSafe",
+      silent: true,
+      clean: true,
+      output_name: "MsgSafe.ipa",
+      include_bitcode: false
+    )
+
+    slack(message: "Uploading testflight", payload: {}, default_payloads: [], slack_url: slack_default)
+    pilot(
+      skip_waiting_for_build_processing: true
+    )
+
+    slack(message: "Uploading symbols to Bugsnag", payload: {}, default_payloads: [], slack_url: slack_default)
+    # download_dsyms(version: version)
+    upload_symbols_to_bugsnag
+
+    # slack(message: "Cleaning build artifacts", payload: {}, default_payloads: [], slack_url: slack_default)
+    #clean_build_artifacts                  # Delete the local dSYM files
+
+    slack(message: "Notifying Bugsnag", payload: {}, default_payloads: [], slack_url: slack_default)
+    send_build_to_bugsnag(
+      config_file: "./ios/MsgSafe/Info.plist",
+      api_key: "30c30e3ade52eecca6b7d24fab6b3bfc",
+      provider: "github-enterprise",
+      builder: "TrustCor Systems S de RL",
+      repository: "https://git.trustcorsystems.com/msgsafe/msgsafe-native"
+    )
+
+    sh('../bugsnag-release.py --buildnumber ' + build + ' --commit ' + revision + ' --notifier 30c30e3ade52eecca6b7d24fab6b3bfc')
+
+    slack(message: "iOS released 🚀", payload: {}, default_payloads: [], slack_url: slack_default)
+  end
+
+  lane :refresh_dsyms do
+    download_dsyms(version: version)
+    upload_symbols_to_bugsnag              # Upload them to Bugsnag
+    clean_build_artifacts                  # Delete the local dSYM files
+  end
+end
+
+platform :android do
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test")
+  end
+
+  lane :icons do
+    android_appicon(
+      appicon_image_file: 'spec/fixtures/MsgSafe.android.png',
+      appicon_devices: [:phone, :tablet],
+      appicon_path: 'android/app/src/main/res/mipmap'
+    )
+  end
+
+  desc "Build and submit a new beta to Google Play Store"
+  lane :beta do |options|
+
+    slack(message: "Cleaning Android environment", payload: {}, default_payloads: [], slack_url: slack_default)
+    gradle(
+      project_dir: "./android",
+      task: "clean"
+    )
+
+    slack(message: "Building for Android", payload: {}, default_payloads: [], slack_url: slack_default)
+    gradle(
+      project_dir: "./android",
+      task: 'assemble',
+      build_type: 'Release',
+      properties: {
+        'versionCode' => build,
+        'versionName' => version
+      }
+    )
+
+    slack(message: "Detecting APK path", payload: {}, default_payloads: [], slack_url: slack_default)
+    apk_path = Actions.lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]
+
+    slack(message: "Uploading to Play Store", payload: {}, default_payloads: [], slack_url: slack_default)
+    supply(
+      apk: apk_path,
+      track: 'beta'
+    )
+
+    sh('../bugsnag-release.py --buildnumber ' + build + ' --commit ' + revision + ' --notifier 323d3322da613caedd0362f5bce64ca9')
+
+    slack(message: "Android released 🚀", payload: {}, default_payloads: [], slack_url: slack_default)
+  end
+end
+
+after_all do |lane|
+  slack(message: "Fastlane finished 🚀", payload: {}, default_payloads: [], slack_url: slack_default)
+end
+
+error do |lane, exception|
+  slack(message: exception.message, payload: exception, success: false)
+end
